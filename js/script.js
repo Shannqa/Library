@@ -107,6 +107,3 @@ function createTable() {
 
 const submit = document.querySelector("#submit");
 submit.addEventListener("click", addBook);
-
-const allRemoveBtns = document.querySelectorAll(".remove-button");
-allRemoveBtns.addEventListener("click", function () {});
