@@ -48,9 +48,19 @@ function createTable() {
     td.textContent = lastBook[value];
     tr.appendChild(td);
   }
+  const td = document.createElement("td");
+  const btn = document.createElement("button");
+  btn.textContent = "✘";
+  btn.setAttribute("class", "remove-button");
+  td.appendChild(btn);
+  tr.appendChild(td);
   table.appendChild(tr);
 }
 
 const submit = document.querySelector("#submit");
-
 submit.addEventListener("click", addBook);
+
+const removeButton = document.querySelector(".remove-button");
+removeButton.addEventListener("click", removeBook);
+
+function removeBook() {}

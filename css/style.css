@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+}
+/* #e4d4c8; 
+#e1b48e
+#daa172
+*/
+body {
+  background-color: #fff;
+  font-size: 1.2rem;
+}
+h1 {
+  text-align: center;
+}
+
+h1,
+h2 {
+  color: #523a28;
+}
+table {
+  background-color: #dfc3af;
+  border: 2px solid #523a28;
+  border-collapse: collapse;
+  box-shadow: 2px 2px 2px 1px rgb(0, 0, 0, 0.5);
+  border-radius: 10px;
+  overflow: hidden;
+}
+table th {
+  font-weight: bold;
+  background-color: #738b19;
+  width: 200px;
+  text-align: left;
+  border: 1px solid #523a28;
+  font-size: 1.2rem;
+  padding: 3px;
+}
+table tr:nth-child(odd) {
+  background-color: #c0a592;
+}
+table th:nth-child(3),
+table th:nth-child(4),
+table th:nth-child(5) {
+  width: 100px;
+}
+
+table td {
+  border: 1px solid #523a28;
+  padding: 3px;
+}
+
+.form {
+  background-color: #dfc3af;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  padding: 16px 8px;
+  border: 2px solid #523a28;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
+}
+input {
+  margin: 5px 0px;
+}
+label {
+  font-weight: bold;
+}
+
+.read-label {
+  font-weight: bold;
+}
+
+#submit {
+  width: 120px;
+  background-color: #738b19;
+  border: 1px solid #523a28;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 0px #523a28;
+  color: #fff;
+  font-weight: bold;
+  padding: 4px;
+  margin: 10px 0px;
+}
+.remove-button {
+  color: #fff;
+  border: 1px solid #523a28;
+  padding: 3px;
+  background-color: #523a28;
+}
