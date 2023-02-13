@@ -43,6 +43,7 @@ const table = document.querySelector("table");
 function createTable() {
   let lastBook = library[library.length - 1];
   const tr = document.createElement("tr");
+  tr.setAttribute("class", `${library.length - 1}`);
   for (let value in lastBook) {
     const td = document.createElement("td");
     td.textContent = lastBook[value];
@@ -51,7 +52,16 @@ function createTable() {
   const td = document.createElement("td");
   const btn = document.createElement("button");
   btn.textContent = "✘";
-  btn.setAttribute("class", "remove-button");
+  btn.setAttribute("id", "remove-button");
+  btn.setAttribute("class", `${library.length - 1}`);
+  btn.addEventListener("click", function () {
+    let index = this.getAttribute("class");
+    let removeRow = document.querySelectorAll(`[class='${index}']`);
+    removeRow.forEach((element) => {
+      element.remove();
+    });
+    delete library[index];
+  });
   td.appendChild(btn);
   tr.appendChild(td);
   table.appendChild(tr);
@@ -60,7 +70,6 @@ function createTable() {
 const submit = document.querySelector("#submit");
 submit.addEventListener("click", addBook);
 
-const removeButton = document.querySelector(".remove-button");
-removeButton.addEventListener("click", removeBook);
-
-function removeBook() {}
+function removeBook() {
+  let bookToRemove;
+}
