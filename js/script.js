@@ -48,12 +48,31 @@ function createTable() {
   for (let value in lastBook) {
     const td = document.createElement("td");
     if (lastBook[value] === "read" || lastBook[value] === "unread") {
-      const readToggle = document.createElement("input");
-      readToggle.setAttribute("type", "checkbox");
+      const labelToggle = document.createElement("label");
+      labelToggle.setAttribute("class", "label-toggle");
+      const inputToggle = document.createElement("input");
+      inputToggle.setAttribute("type", "checkbox");
+      inputToggle.addEventListener("change", function () {
+        if (this.checked) {
+          // change from unchecked to checked
+          lastBook[value] = "read";
+        } else {
+          lastBook[value] = "unread";
+        }
+        //text node with read/unread value
+        let oldStatus = this.parentNode.nextSibling;
+        oldStatus.remove();
+        let newTextNode = document.createTextNode(`${lastBook[value]}`);
+        td.appendChild(newTextNode);
+      });
+      const spanToggle = document.createElement("span");
+      spanToggle.setAttribute("class", "span-toggle");
       if (lastBook[value] === "read") {
-        readToggle.setAttribute("checked", "checked");
+        inputToggle.setAttribute("checked", "checked");
       }
-      td.appendChild(readToggle);
+      labelToggle.appendChild(inputToggle);
+      labelToggle.appendChild(spanToggle);
+      td.appendChild(labelToggle);
       let textNode = document.createTextNode(`${lastBook[value]}`);
       td.appendChild(textNode);
       tr.appendChild(td);
