@@ -43,7 +43,7 @@ table th:nth-child(4) {
 }
 
 table th:nth-child(5) {
-  width: 50px;
+  width: 80px;
 }
 
 table td {
@@ -83,19 +83,26 @@ label {
   padding: 4px;
   margin: 10px 0px;
 }
-.remove-button {
+#remove-button {
   color: #fff;
   border: 1px solid #523a28;
   padding: 3px;
   background-color: #523a28;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 2px;
+  vertical-align: middle;
 }
-
+#remove-button:hover {
+  background-color: #723405;
+}
 .label-toggle {
   position: relative;
   display: inline-block;
   width: 60px;
   height: 20px;
   margin-right: 5px;
+  vertical-align: middle;
 }
 
 .label-toggle input {

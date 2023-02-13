@@ -88,12 +88,17 @@ function createTable() {
   btn.setAttribute("id", "remove-button");
   btn.setAttribute("class", `${library.length - 1}`);
   btn.addEventListener("click", function () {
-    let index = this.getAttribute("class");
-    let removeRow = document.querySelectorAll(`[class='${index}']`);
-    removeRow.forEach((element) => {
-      element.remove();
-    });
-    delete library[index];
+    let removeConfirm = confirm(
+      "Are you sure you want to remove the book from your library?"
+    );
+    if (removeConfirm) {
+      let index = this.getAttribute("class");
+      let removeRow = document.querySelectorAll(`[class='${index}']`);
+      removeRow.forEach((element) => {
+        element.remove();
+      });
+      delete library[index];
+    }
   });
   td.appendChild(btn);
   tr.appendChild(td);
@@ -103,6 +108,5 @@ function createTable() {
 const submit = document.querySelector("#submit");
 submit.addEventListener("click", addBook);
 
-function removeBook() {
-  let bookToRemove;
-}
+const allRemoveBtns = document.querySelectorAll(".remove-button");
+allRemoveBtns.addEventListener("click", function () {});
