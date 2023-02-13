@@ -1,4 +1,10 @@
-let myLibrary = [];
+const title = document.querySelector("#title");
+const author = document.querySelector("#author");
+const pages = document.querySelector("#pages");
+const read = document.querySelector("#read");
+const unread = document.querySelector("#unread");
+
+const library = [];
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -6,7 +12,7 @@ function Book(title, author, pages, read) {
   this.pages = pages;
   this.read = read;
 }
-
+/* 
 Book.prototype.info = function () {
   return (
     this.title +
@@ -19,7 +25,32 @@ Book.prototype.info = function () {
     "."
   );
 };
+*/
+function addBook(event) {
+  event.preventDefault();
+  let readState;
+  if (read.checked) {
+    readState = "read";
+  } else {
+    readState = "unread";
+  }
+  let newBook = new Book(title.value, author.value, pages.value, readState);
+  library.push(newBook);
+  createTable();
+}
 
-function addBookToLibrary() {}
+const table = document.querySelector("table");
+function createTable() {
+  let lastBook = library[library.length - 1];
+  const tr = document.createElement("tr");
+  for (let value in lastBook) {
+    const td = document.createElement("td");
+    td.textContent = lastBook[value];
+    tr.appendChild(td);
+  }
+  table.appendChild(tr);
+}
 
-const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", "295 pages", "read");
+const submit = document.querySelector("#submit");
+
+submit.addEventListener("click", addBook);
