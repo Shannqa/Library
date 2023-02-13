@@ -40,14 +40,28 @@ function addBook(event) {
 }
 
 const table = document.querySelector("table");
+
 function createTable() {
   let lastBook = library[library.length - 1];
   const tr = document.createElement("tr");
   tr.setAttribute("class", `${library.length - 1}`);
   for (let value in lastBook) {
     const td = document.createElement("td");
-    td.textContent = lastBook[value];
-    tr.appendChild(td);
+    if (lastBook[value] === "read" || lastBook[value] === "unread") {
+      const readToggle = document.createElement("input");
+      readToggle.setAttribute("type", "checkbox");
+      if (lastBook[value] === "read") {
+        readToggle.setAttribute("checked", "checked");
+      }
+      td.appendChild(readToggle);
+      let textNode = document.createTextNode(`${lastBook[value]}`);
+      td.appendChild(textNode);
+      tr.appendChild(td);
+    } else {
+      td.textContent = lastBook[value];
+      tr.appendChild(td);
+    }
+    table.appendChild(tr);
   }
   const td = document.createElement("td");
   const btn = document.createElement("button");
