@@ -26,6 +26,18 @@ Book.prototype.info = function () {
   );
 };
 */
+/* TO DO: 
+- remove input values after submitting form
+- add placeholders to input fields
+- add a couple of default books set as unread
+- add a log, including the amount of read/unread books and total in the library
+- add a footer/created by shannqa info
+- change fonts
+- change the library logo, possibly include some free images
+- add form validation - numbers in the pages field, other fields required
+- possibly add the date the book was read?
+*/
+
 function addBook(event) {
   event.preventDefault();
   let readState;
@@ -37,6 +49,7 @@ function addBook(event) {
   let newBook = new Book(title.value, author.value, pages.value, readState);
   library.push(newBook);
   createTable();
+  getStats();
 }
 
 const table = document.querySelector("table");
@@ -63,6 +76,7 @@ function createTable() {
         let oldStatus = this.parentNode.nextSibling;
         oldStatus.remove();
         let newTextNode = document.createTextNode(`${lastBook[value]}`);
+        getStats();
         td.appendChild(newTextNode);
       });
       const spanToggle = document.createElement("span");
@@ -98,6 +112,7 @@ function createTable() {
         element.remove();
       });
       delete library[index];
+      getStats();
     }
   });
   td.appendChild(btn);
@@ -107,3 +122,15 @@ function createTable() {
 
 const submit = document.querySelector("#submit");
 submit.addEventListener("click", addBook);
+
+/* Statistics of the user's library */
+function getStats() {
+  const statsRead = document.querySelector(".stats-read");
+  const statsUnread = document.querySelector(".stats-unread");
+  const statsTotal = document.querySelector(".stats-total");
+  let numRead = library.filter((book) => book.read === "read");
+  let numUnread = library.filter((book) => book.read === "unread");
+  statsRead.textContent = numRead.length;
+  statsUnread.textContent = numUnread.length;
+  statsTotal.textContent = library.length;
+}

@@ -17,6 +17,17 @@ h1,
 h2 {
   color: #523a28;
 }
+
+div.stats {
+  background-color: #dfc3af;
+  width: 250px;
+  padding: 16px 8px;
+  border: 2px solid #523a28;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+}
+
 table {
   background-color: #dfc3af;
   border: 2px solid #523a28;
