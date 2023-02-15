@@ -162,6 +162,7 @@ function changeStatus() {
     statusTextField.textContent = "read";
     this.setAttribute("checked", "checked");
   }
+  getStats();
 }
 
 const submit = document.querySelector("#submit");
@@ -172,8 +173,8 @@ function getStats() {
   const statsRead = document.querySelector(".stats-read");
   const statsUnread = document.querySelector(".stats-unread");
   const statsTotal = document.querySelector(".stats-total");
-  let numRead = library.filter((book) => book.read === "read");
-  let numUnread = library.filter((book) => book.read === "unread");
+  let numRead = library.filter((book) => book.status === "read");
+  let numUnread = library.filter((book) => book.status === "unread");
   statsRead.textContent = numRead.length;
   statsUnread.textContent = numUnread.length;
   statsTotal.textContent = library.length;
