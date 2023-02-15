@@ -61,8 +61,8 @@ function createTableNew() {
     const tr = document.createElement("tr");
     for (value in book) {
       const td = document.createElement("td");
+      // Add a toggle for the read/unread status
       if (value === "status") {
-        // Add a toggle for the read/unread status
         const labelToggle = document.createElement("label");
         const inputToggle = document.createElement("input");
         const spanToggle = document.createElement("span");
@@ -82,6 +82,15 @@ function createTableNew() {
       td.setAttribute("data-index", `${index}`);
       tr.appendChild(td);
     }
+    // Add a delete from the library button
+    const td = document.createElement("td");
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "✘";
+    deleteButton.setAttribute("id", "delete-button");
+    deleteButton.setAttribute("data-index", `${index}`);
+    deleteButton.addEventListener("click", deleteBook);
+    td.appendChild(deleteButton);
+    tr.appendChild(td);
     table.appendChild(tr);
   });
 }
@@ -91,59 +100,6 @@ function removeTable() {
     table.removeChild(table.lastChild);
   }
 }
-
-// function createTable() {
-//   let lastBook = library[library.length - 1];
-//   const tr = document.createElement("tr");
-//   tr.setAttribute("class", `${library.length - 1}`);
-//   for (let value in lastBook) {
-//     const td = document.createElement("td");
-//     if (lastBook[value] === "read" || lastBook[value] === "unread") {
-//       const labelToggle = document.createElement("label");
-//       labelToggle.setAttribute("class", "label-toggle");
-//       const inputToggle = document.createElement("input");
-//       inputToggle.setAttribute("type", "checkbox");
-//       inputToggle.addEventListener("change", changeStatus);
-//       const spanToggle = document.createElement("span");
-//       spanToggle.setAttribute("class", "span-toggle");
-//       if (lastBook[value] === "read") {
-//         inputToggle.setAttribute("checked", "checked");
-//       }
-//       labelToggle.appendChild(inputToggle);
-//       labelToggle.appendChild(spanToggle);
-//       td.appendChild(labelToggle);
-//       let textNode = document.createTextNode(`${lastBook[value]}`);
-//       td.appendChild(textNode);
-//       tr.appendChild(td);
-//     } else {
-//       td.textContent = lastBook[value];
-//       tr.appendChild(td);
-//     }
-//     table.appendChild(tr);
-//   }
-//   const td = document.createElement("td");
-//   const btn = document.createElement("button");
-//   btn.textContent = "✘";
-//   btn.setAttribute("id", "remove-button");
-//   btn.setAttribute("class", `${library.length - 1}`);
-//   btn.addEventListener("click", function () {
-//     let removeConfirm = confirm(
-//       "Are you sure you want to remove the book from your library?"
-//     );
-//     if (removeConfirm) {
-//       let index = this.getAttribute("class");
-//       let removeRow = document.querySelectorAll(`[class='${index}']`);
-//       removeRow.forEach((element) => {
-//         element.remove();
-//       });
-//       delete library[index];
-//       getStats();
-//     }
-//   });
-//   td.appendChild(btn);
-//   tr.appendChild(td);
-//   table.appendChild(tr);
-// }
 
 /* Change read/unread status */
 function changeStatus() {
@@ -165,6 +121,20 @@ function changeStatus() {
   getStats();
 }
 
+/* Delete a book from the library */
+function deleteBook() {
+  let removeConfirm = confirm(
+    "Are you sure you want to remove the book from your library?"
+  );
+  if (removeConfirm) {
+    let deleteIndex = this.getAttribute("data-index");
+    library.splice(deleteIndex, 1);
+    createTableNew();
+    getStats();
+  }
+}
+
+/* Submit the book to the library */
 const submit = document.querySelector("#submit");
 submit.addEventListener("click", addBook);
 
