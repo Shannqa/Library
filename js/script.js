@@ -18,8 +18,6 @@ function Book(title, author, pages, status) {
 - add placeholders to input fields
 - add a couple of default books set as unread
 - add a footer/created by shannqa info
-- change fonts
-- change the library logo, possibly include some free images
 - add form validation - numbers in the pages field, other fields required
 - possibly add the date the book was read?
 */
@@ -36,6 +34,8 @@ function addBook(event) {
   library.push(newBook);
   createTableNew();
   getStats();
+  const form = document.querySelector("#form");
+  form.reset();
 }
 
 const table = document.querySelector("tbody");
