@@ -9,13 +9,34 @@
     <title>Library</title>
   </head>
   <body>
-    <h1>Library</h1>
+    <div class="header">
+      <img
+        src="img/book-open-page-variant-outline.svg"
+        class="logo"
+        alt="Website logo"
+      />
+      <span class="title">Library</span>
+    </div>
     <h2>Stats</h2>
     <div class="stats">
-      <p>Read books: <span class="stats-read"></span></p>
-      <p>Unread books: <span class="stats-unread"></span></p>
-      <p>Total in library: <span class="stats-total"></span></p>
+      <div>Read books:</div>
+      <div class="stats-read">0</div>
+      <div>Unread books:</div>
+      <div class="stats-unread">0</div>
+      <div>Total in library:</div>
+      <div class="stats-total">0</div>
     </div>
+    <h2>Your Books</h2>
+    <table class="my-library">
+      <thead>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Pages</th>
+        <th>Status</th>
+        <th>Remove</th>
+      </thead>
+      <tbody></tbody>
+    </table>
     <h2>Add a Book</h2>
     <form>
       <div class="form">
@@ -41,17 +62,5 @@
         <button type="button" id="submit">Submit</button>
       </div>
     </form>
-
-    <h2>Your Books</h2>
-    <table class="my-library">
-      <thead>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Pages</th>
-        <th>Status</th>
-        <th>Remove</th>
-      </thead>
-      <tbody></tbody>
-    </table>
   </body>
 </html>

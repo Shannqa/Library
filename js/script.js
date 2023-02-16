@@ -12,25 +12,11 @@ function Book(title, author, pages, status) {
   this.pages = pages;
   this.status = status;
 }
-/* 
-Book.prototype.info = function () {
-  return (
-    this.title +
-    " by " +
-    this.author +
-    ", " +
-    this.pages +
-    ", " +
-    this.read +
-    "."
-  );
-};
-*/
+
 /* TO DO: 
 - remove input values after submitting form
 - add placeholders to input fields
 - add a couple of default books set as unread
-- add a log, including the amount of read/unread books and total in the library
 - add a footer/created by shannqa info
 - change fonts
 - change the library logo, possibly include some free images
