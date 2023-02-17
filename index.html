@@ -40,12 +40,32 @@
     <h2>Add a Book</h2>
     <form id="form">
       <div class="form">
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" />
-        <label for="author">Author:</label>
-        <input type="text" id="author" name="author" />
+        <label for="title"
+          >Title:
+          <span class="required-input">(required)</span>
+        </label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          minlength="1"
+          maxlength="100"
+          required
+        />
+        <label for="author"
+          >Author: <span class="required-input">(required)</span></label
+        >
+        <input
+          type="text"
+          id="author"
+          name="author"
+          minlength="1"
+          maxlength="100"
+          required
+        /><!-- pattern="^\d{1,99999999}" -->
         <label for="pages">Pages:</label>
-        <input type="text" id="pages" name="pages" />
+        <input type="number" id="pages" name="pages" min="1" max="99999999" />
+        <div class="invalid-pages"></div>
         <div>
           <p class="read-label">Read the book?</p>
           <input
@@ -59,7 +79,7 @@
           <input type="radio" name="read-status" id="unread" value="unread" />
           <label for="unread">No</label>
         </div>
-        <button type="button" id="submit">Submit</button>
+        <button id="submit">Submit</button>
       </div>
     </form>
   </body>

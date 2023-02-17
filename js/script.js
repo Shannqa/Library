@@ -14,7 +14,6 @@ function Book(title, author, pages, status) {
 }
 
 /* TO DO: 
-- remove input values after submitting form
 - add placeholders to input fields
 - add a couple of default books set as unread
 - add a footer/created by shannqa info
@@ -23,19 +22,25 @@ function Book(title, author, pages, status) {
 */
 
 function addBook(event) {
-  event.preventDefault();
-  let readState;
-  if (read.checked) {
-    readState = "read";
-  } else {
-    readState = "unread";
-  }
-  let newBook = new Book(title.value, author.value, pages.value, readState);
-  library.push(newBook);
-  createTableNew();
-  getStats();
   const form = document.querySelector("#form");
-  form.reset();
+
+  if (form.checkValidity()) {
+    let readState;
+    if (read.checked) {
+      readState = "read";
+    } else {
+      readState = "unread";
+    }
+    let newBook = new Book(title.value, author.value, pages.value, readState);
+    library.push(newBook);
+    createTableNew();
+    getStats();
+
+    form.reset();
+  } else {
+    return;
+  }
+  event.preventDefault();
 }
 
 const table = document.querySelector("tbody");

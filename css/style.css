@@ -79,6 +79,11 @@ table th:nth-child(5) {
 table td {
   border: 1px solid #523a28;
   padding: 3px;
+  width: 150px;
+  max-width: 400px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .form {
@@ -94,8 +99,15 @@ table td {
 input {
   margin: 5px 0px;
 }
+input:invalid {
+  border: 1px solid red;
+}
 label {
   font-weight: bold;
+}
+.required-input {
+  font-weight: 400;
+  font-size: 0.8rem;
 }
 
 .read-label {
