@@ -6,13 +6,14 @@ const unread = document.querySelector("#unread");
 
 const library = [];
 
-function Book(title, author, pages, status) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.status = status;
+class Book {
+  constructor(title, author, pages, status) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.status = status;
+  }
 }
-
 /* TO DO: 
 - add placeholders to input fields
 - add a couple of default books set as unread
