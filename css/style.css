@@ -4,15 +4,36 @@
   box-sizing: border-box;
 }
 
+:root,
+:root.light {
+  --primary-color: #dfc3af;
+  --secondary-color: #738b19;
+  --accent-color: #523a28;
+  --bg-secondary: hsl(120deg 7% 10%);
+  --bg-color: white;
+  --font-color: black;
+}
+
+:root.dark {
+  --primary-color: rgb(32 38 32);
+  --secondary-color: rgb(32 38 32);
+  --accent-color: #dfc3af;
+  --bg-color: hsl(120deg 7% 10%);
+  --bg-secondary: rgb(32 38 32);
+  --font-color: white;
+}
+
 body {
-  background-color: #fff;
+  background-color: var(--bg-color);
   font-size: 1.2rem;
   font-family: "Gentium Book Plus", serif;
+  margin: 10px;
+  color: var(--font-color);
 }
 
 .header {
-  display: flex;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: 60px 200px 1fr 30px;
   align-items: center;
   gap: 10px;
 }
@@ -24,18 +45,27 @@ body {
 .title {
   font-size: 3rem;
   font-weight: bold;
-  color: #523a28;
+  color: var(--accent-color);
   text-shadow: 1px 1px 2px rgba(39, 48, 9, 0.5);
 }
+
+.settings {
+  grid-column: 4 / 5;
+}
+
+.theme {
+  height: 30px;
+}
+
 h2 {
-  color: #523a28;
+  color: var(--accent-color);
 }
 
 div.stats {
-  background-color: #dfc3af;
+  background-color: var(--primary-color);
   width: 250px;
   padding: 8px;
-  border: 2px solid #523a28;
+  border: 2px solid var(--accent-color);
   border-radius: 10px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
   font-weight: bold;
@@ -43,24 +73,26 @@ div.stats {
   grid-template-columns: 1fr 15px;
   grid-template-rows: fr fr fr;
 }
+
 .stats p {
   margin: 4px;
 }
 
 table {
-  background-color: #dfc3af;
-  border: 2px solid #523a28;
+  background-color: var(--primary-color);
+  border: 2px solid var(--accent-color);
   border-collapse: collapse;
   box-shadow: 2px 2px 2px 1px rgb(0, 0, 0, 0.5);
   border-radius: 10px;
   overflow: hidden;
 }
+
 table th {
   font-weight: bold;
-  background-color: #738b19;
+  background-color: var(--secondary-color);
   width: 200px;
   text-align: left;
-  border: 1px solid #523a28;
+  border: 1px solid var(--accent-color);
   font-size: 1.2rem;
   padding: 3px;
 }
@@ -77,7 +109,7 @@ table th:nth-child(5) {
 }
 
 table td {
-  border: 1px solid #523a28;
+  border: 1px solid var(--accent-color);
   padding: 3px;
   width: 150px;
   max-width: 400px;
@@ -87,18 +119,22 @@ table td {
 }
 
 .form {
-  background-color: #dfc3af;
+  background-color: var(--primary-color);
   display: flex;
   flex-direction: column;
   width: 500px;
   padding: 16px 8px;
-  border: 2px solid #523a28;
+  border: 2px solid var(--accent-color);
   border-radius: 10px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
 }
 input {
   margin: 5px 0px;
+  background-color: var(--bg-color);
+  color: var(--font-color);
+  font-size: 1.2rem;
 }
+
 input:invalid {
   border: 1px solid red;
 }
@@ -116,28 +152,31 @@ label {
 
 #submit {
   width: 120px;
-  background-color: #738b19;
-  border: 1px solid #523a28;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--accent-color);
   border-radius: 5px;
-  box-shadow: 2px 2px 2px 0px #523a28;
+  box-shadow: 2px 2px 2px 0px var(--accent-color);
   color: #fff;
   font-weight: bold;
   padding: 4px;
   margin: 10px 0px;
 }
+
 #delete-button {
   color: #fff;
-  border: 1px solid #523a28;
+  border: 1px solid var(--accent-color);
   padding: 3px;
-  background-color: #523a28;
+  background-color: var(--accent-color);
   border-radius: 6px;
   cursor: pointer;
   margin-left: 2px;
   vertical-align: middle;
 }
+
 #remove-button:hover {
   background-color: #723405;
 }
+
 .label-toggle {
   position: relative;
   display: inline-block;
@@ -160,7 +199,7 @@ label {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #523a28;
+  background-color: var(--accent-color);
   -webkit-transition: 0.4s;
   transition: 0.4s;
   border-radius: 20px;
@@ -179,7 +218,7 @@ label {
 }
 
 input:checked + .span-toggle {
-  background-color: #738b19;
+  background-color: var(--secondary-color);
 }
 
 input:focus + .span-toggle {

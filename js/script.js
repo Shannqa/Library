@@ -140,3 +140,17 @@ function getStats() {
   statsUnread.textContent = numUnread.length;
   statsTotal.textContent = library.length;
 }
+
+/* Theme settings */
+const themeButton = document.querySelector(".theme");
+function setTheme() {
+  const root = document.documentElement;
+  let newTheme = root.className === "dark" ? "light" : "dark";
+  let newSVG =
+    themeButton.getAttribute("src") === "img/sun-white.svg"
+      ? "img/sun-black.svg"
+      : "img/sun-white.svg";
+  themeButton.setAttribute("src", `${newSVG}`);
+  root.className = newTheme;
+}
+themeButton.addEventListener("click", setTheme);
